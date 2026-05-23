@@ -21,10 +21,10 @@ interface Props {
   className?: string;
 }
 
-export function TopicSuggestions({ 
-  board, 
-  classNum, 
-  subject, 
+export function TopicSuggestions({
+  board,
+  classNum,
+  subject,
   value,
   onSelectTopic,
   onChangeTopic,
@@ -66,8 +66,8 @@ export function TopicSuggestions({
       <ComboboxContent>
         <ComboboxList>
           {(item) => (
-            <ComboboxItem key={item} value={item}>
-              {item}
+            <ComboboxItem key={String(item)} value={String(item)}>
+              {String(item)}
             </ComboboxItem>
           )}
         </ComboboxList>
