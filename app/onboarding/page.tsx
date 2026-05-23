@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 import { Sparkles, ArrowRight, BookOpen, Zap, Brain, FileText, Activity, Check } from 'lucide-react';
 import { useEffect } from 'react';
+import type { User } from '@supabase/supabase-js';
 
 const BOARDS = ['CBSE', 'ICSE', 'State Board'];
 const CLASSES = ['1', '2', '3', '4', '5', '6', '7', '8'];
@@ -43,7 +44,7 @@ export default function OnboardingPage() {
   // Step 4: Language
   const [language, setLanguage] = useState<string>('English');
 
-  const [sessionUser, setSessionUser] = useState<any>(null);
+  const [sessionUser, setSessionUser] = useState<User | null>(null);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -198,7 +199,7 @@ export default function OnboardingPage() {
           {step === 2 && (
             <div>
               <h2 className="font-jakarta text-xl font-bold text-heading mb-1">Create your account</h2>
-              <p className="text-[#8a6848] text-sm mb-6">Let's set you up in 2 minutes.</p>
+              <p className="text-[#8a6848] text-sm mb-6">Let&apos;s set you up in 2 minutes.</p>
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-heading mb-1.5">Full Name</label>
@@ -223,7 +224,7 @@ export default function OnboardingPage() {
           {step === 3 && (
             <div>
               <h2 className="font-jakarta text-xl font-bold text-heading mb-1">Your Teaching Profile</h2>
-              <p className="text-[#8a6848] text-sm mb-6">We'll use this to personalise your content.</p>
+              <p className="text-[#8a6848] text-sm mb-6">We&apos;ll use this to personalise your content.</p>
               <div className="space-y-5">
                 <div>
                   <label className="block text-sm font-medium text-heading mb-1.5">Full Name</label>
@@ -294,7 +295,7 @@ export default function OnboardingPage() {
               <h2 className="font-jakarta text-2xl font-bold text-heading mb-2">
                 Welcome, {firstName || 'Teacher'}! 🎉
               </h2>
-              <p className="text-[#8a6848] mb-8">You're all set. Here's what you can create:</p>
+              <p className="text-[#8a6848] mb-8">You&apos;re all set. Here&apos;s what you can create:</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
                 {TOOLS.map(({ icon: Icon, name, desc, color, bg }) => (
                   <div key={name} className="border border-border rounded-xl p-3 text-left">

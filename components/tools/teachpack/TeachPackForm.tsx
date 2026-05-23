@@ -109,7 +109,7 @@ export function TeachPackForm({ profile, onSubmit, loading }: Props) {
             <Select
               value={String(form.duration)}
               onValueChange={(value) =>
-                setForm({ ...form, duration: parseInt(value) as any })
+                setForm({ ...form, duration: parseInt(value) as TeachPackFormInput['duration'] })
               }
             >
               <SelectTrigger className="border-0 ring-0 ring-offset-0 focus:ring-0 focus:ring-offset-0 bg-transparent text-sm outline-none cursor-pointer px-3 py-1 font-medium text-[#0F0F1A] w-full max-w-36">

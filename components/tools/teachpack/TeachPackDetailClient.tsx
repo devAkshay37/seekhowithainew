@@ -45,9 +45,9 @@ export function TeachPackDetailClient({ pack, formData }: Props) {
 
       router.push("/app");
       router.refresh();
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error updating TeachPack:", err);
-      setError(err.message || "Failed to update. Please try again.");
+      setError(err instanceof Error ? err.message : "Failed to update. Please try again.");
     } finally {
       setSaving(false);
     }
