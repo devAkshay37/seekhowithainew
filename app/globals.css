@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Geist:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600&family=Noto+Sans+Gujarati:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Semantic */
+    --background: 32 100% 97%;
+    /* #fff8f0 */
+    --foreground: 32 68% 10%;
+    /* #2a1a08 */
+    --heading: 35 100% 5%;
+    /* #1a0f00 */
+    --card: 0 0% 100%;
+    /* #ffffff */
+    --card-foreground: 32 68% 10%;
+    /* #2a1a08 */
+    --popover: 0 0% 100%;
+    --popover-foreground: 32 68% 10%;
+
+    --primary: 182 80% 25%;
+    /* #0d6f72 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 32 36% 35%;
+    /* #7a5c3a */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 24 22% 64%;
+    /* #b8a090 */
+    --muted-foreground: 32 36% 35%;
+    /* #7a5c3a */
+
+    --accent: 35 100% 38%;
+    /* #c07000 */
+    --accent-foreground: 0 0% 100%;
+    /* #ffffff */
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 142 72% 45%;
+
+    --border: 34 42% 87%;
+    /* #ece0d0 */
+    --input: 34 42% 87%;
+    /* #ece0d0 */
+    --ring: 182 80% 25%;
+    /* #0d6f72 */
+
+    --radius: 0.75rem;
+
+    /* Custom brand tokens */
+    --bg-primary: 32 100% 97%;
+    /* #fff8f0 */
+    --bg-secondary: 0 0% 100%;
+    /* #ffffff */
+    --text-primary: 32 68% 10%;
+    /* #2a1a08 */
+    --text-muted: 32 36% 35%;
+    /* #7a5c3a */
+
+    --teal: 182 80% 25%;
+    /* #0d6f72 */
+    --saffron: 35 100% 38%;
+    /* #c07000 */
+  }
+
+  .dark {
+    --background: 180 41% 9%;
+    /* #0d1f1f */
+    --foreground: 180 17% 82%;
+    /* #c8d8d8 */
+    --heading: 32 100% 97%;
+    /* #fff8f0 */
+    --card: 180 36% 12%;
+    /* #132828 */
+    --card-foreground: 180 17% 82%;
+    /* #c8d8d8 */
+    --popover: 180 36% 12%;
+    /* #132828 */
+    --popover-foreground: 180 17% 82%;
+    /* #c8d8d8 */
+
+    --primary: 182 69% 40%;
+    /* #1fa8ac */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 21% 57%;
+    /* #7aa8a8 */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 180 21% 57%;
+    /* #7aa8a8 */
+    --muted-foreground: 180 21% 57%;
+    /* #7aa8a8 */
+
+    --accent: 36 100% 44%;
+    /* #e08800 */
+    --accent-foreground: 0 0% 100%;
+    /* #ffffff */
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 142 72% 45%;
+
+    --border: 180 35% 18%;
+    /* #1e3e3e */
+    --input: 180 35% 18%;
+    /* #1e3e3e */
+    --ring: 182 69% 40%;
+    /* #1fa8ac */
+
+    --bg-primary: 180 41% 9%;
+    /* #0d1f1f */
+    --bg-secondary: 180 36% 12%;
+    /* #132828 */
+    --text-primary: 180 17% 82%;
+    /* #c8d8d8 */
+    --text-muted: 180 21% 57%;
+    /* #7aa8a8 */
+
+    --teal: 182 69% 40%;
+    /* #1fa8ac */
+    --saffron: 36 100% 44%;
+    /* #e08800 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    @apply font-semibold text-heading;
+  }
+}
+
+@layer utilities {
+  .font-jakarta {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  .font-geist {
+    font-family: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  .font-devanagari {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+
+  .font-gujarati {
+    font-family: 'Noto Sans Gujarati', sans-serif;
+  }
+
+  .brand-gradient {
+    /* REMOVED GRADIENT: bg-teal */
+    background: hsl(var(--teal));
+  }
+
+  .brand-gradient-text {
+    /* REMOVED GRADIENT: bg-teal-text */
+    color: hsl(var(--teal));
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(240 15% 88%);
+  }
+
+  .tool-card-hover {
+    @apply transition-all duration-200 hover:shadow-md hover:-translate-y-0.5;
+  }
+
+  .section-card {
+    @apply border border-border rounded-xl bg-card overflow-hidden;
+  }
+
+  .generating-pulse {
+    animation: generating-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes generating-pulse {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ── Quiz Print / Save PDF ─────────────────────────────────────────── */
+@media print {
+  /* Hide everything on the page */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* Show only the quiz preview and all its children */
+  #quiz-print-area,
+  #quiz-print-area * {
+    visibility: visible !important;
+  }
+
+  /* Position the quiz at the very top-left of the page */
+  #quiz-print-area {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 24px !important;
+    background: white !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  @page {
+    margin: 12mm;
+    size: A4;
+  }
+}
