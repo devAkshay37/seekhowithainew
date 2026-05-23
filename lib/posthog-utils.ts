@@ -2,8 +2,8 @@ import { SupabaseClient } from '@supabase/supabase-js';
 import { PostHog } from 'posthog-js';
 
 export async function trackGenerationCompletion(
-  supabase: any,
-  posthog: any,
+  supabase: SupabaseClient,
+  posthog: PostHog,
   tool: string,
   formData: object | undefined,
   timeTaken: number,
