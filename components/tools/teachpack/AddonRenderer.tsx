@@ -1,5 +1,5 @@
 import { AddOn } from '@/types';
-
+import { EditableField } from './TeachPackSection';
 
 interface Props {
   addon: AddOn;

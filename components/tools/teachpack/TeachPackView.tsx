@@ -35,8 +35,8 @@ export function TeachPackView({
   const [activeLecture, setActiveLecture] = useState(0);
   const posthog = usePostHog();
 
-
-  function updateContent(path: (string | number)[], value: unknown) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function updateContent(path: (string | number)[], value: any) {
     if (savedId) {
       posthog.capture("teachpack_edited", {
         teachpack_id: savedId,
@@ -46,7 +46,7 @@ export function TeachPackView({
     setContent((prev) => {
       const next = JSON.parse(JSON.stringify(prev));
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      let obj: Record<string, any> = next;
+      let obj: any = next;
       for (let i = 0; i < path.length - 1; i++) {
         obj = obj[path[i]];
       }

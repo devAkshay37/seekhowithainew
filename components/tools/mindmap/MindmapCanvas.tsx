@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import type { MindmapContent, MindmapBranch, MindmapChild } from '@/types';
 
 interface Props {

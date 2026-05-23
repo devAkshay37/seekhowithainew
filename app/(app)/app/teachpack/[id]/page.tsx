@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { TeachPackDetailClient } from "@/components/tools/teachpack/TeachPackDetailClient";
+import TeachPackDetailClient from "@/components/tools/teachpack/TeachPackDetailClient";
 import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";

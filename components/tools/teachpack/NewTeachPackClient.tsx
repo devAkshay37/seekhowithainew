@@ -55,10 +55,10 @@ export function NewTeachPackClient({ profile }: Props) {
 
       setContent(generatedContent);
       setStatus('result');
-    } catch (err: unknown) {
+    } catch (err: any) {
       posthog.capture('teachpack_generation_failed', {
         tool: 'TeachPack',
-        error: err instanceof Error ? err.message : 'Unknown error'
+        error: err.message || 'Unknown error'
       });
       setError('Failed to generate TeachPack. Please try again.');
       setStatus('form');
@@ -98,9 +98,9 @@ export function NewTeachPackClient({ profile }: Props) {
         });
         router.push(`/app/teachpack/${data.id}`);
       }
-    } catch (err: unknown) {
+    } catch (err: any) {
       console.error('Full save error details:', err);
-      setError(err instanceof Error ? err.message : 'Failed to save. Please try again.');
+      setError(err.message || 'Failed to save. Please try again.');
     } finally {
       setSaving(false);
     }

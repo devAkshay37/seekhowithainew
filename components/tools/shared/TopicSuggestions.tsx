@@ -21,10 +21,10 @@ interface Props {
   className?: string;
 }
 
-export function TopicSuggestions({
-  board,
-  classNum,
-  subject,
+export function TopicSuggestions({ 
+  board, 
+  classNum, 
+  subject, 
   value,
   onSelectTopic,
   onChangeTopic,
@@ -56,18 +56,13 @@ export function TopicSuggestions({
   }, [board, classNum, subject]);
 
   return (
-    <Combobox
-      items={topics}
-      value={value}
-      onSelect={(val) => { if (typeof val === "string") onSelectTopic(val); }}
-      onChange={onChangeTopic}
-    >
+    <Combobox items={topics} value={value} onSelect={onSelectTopic} onChange={onChangeTopic}>
       <ComboboxInput placeholder={placeholder} className={className} />
       <ComboboxContent>
         <ComboboxList>
           {(item) => (
-            <ComboboxItem key={String(item)} value={String(item)}>
-              {String(item)}
+            <ComboboxItem key={item} value={item}>
+              {item}
             </ComboboxItem>
           )}
         </ComboboxList>

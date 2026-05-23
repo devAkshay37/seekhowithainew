@@ -60,7 +60,7 @@ const tools: ToolConfig[] = [
 ];
 
 function ToolCard({ tool }: { tool: ToolConfig }) {
-  const { icon: Icon, name, cardStyle, iconContainer, iconColor } = tool;
+  const { icon: Icon, name, desc, cardStyle, iconContainer, iconColor } = tool;
 
   return (
     <Link
