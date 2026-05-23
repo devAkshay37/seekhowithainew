@@ -3,8 +3,7 @@
 import { AlertCircle, RotateCcw } from 'lucide-react';
 
 export default function GlobalError({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  _error,
+  error: _error,
   reset,
 }: {
   error: Error & { digest?: string };
@@ -21,7 +20,7 @@ export default function GlobalError({
           <p className="text-[#6B6B8A] mb-8 max-w-md">
             The application experienced a fatal error. Please try again or refresh the page.
           </p>
-          
+
           <button
             onClick={() => reset()}
             className="flex items-center justify-center gap-2 bg-[#E85D1E] text-white font-medium px-6 py-3 rounded-xl hover:bg-[#d05018] shadow-sm transition-colors"
