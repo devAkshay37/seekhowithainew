@@ -1,32 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
-import Link from "next/link";
-import { BookOpen, ArrowRight, ArrowDown } from "lucide-react";
 import ToolsDashboardSection from "@/components/tools/dashboard/ToolsDashboardSection";
 import type { Profile } from "@/types";
-import Image from "next/image";
-
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("en-IN", {
-    day: "numeric",
-    month: "short",
-  });
-}
-
-const toolTypeLabels: Record<string, string> = {
-  teachpack: "TeachPack",
-  lastminprep: "Last Min Prep",
-  mindmap: "Mindmap",
-  quiz: "Quiz",
-  activity: "Activity",
-};
-
-const toolTypeHref: Record<string, string> = {
-  teachpack: "/app/teachpack",
-  lastminprep: "/app/lastminprep",
-  mindmap: "/app/mindmap",
-  quiz: "/app/quiz",
-  activity: "/app/activity",
-};
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -42,13 +16,7 @@ export default async function DashboardPage() {
     .single();
 
   // Fetch recent items across all tools
-  const [
-    { data: packs },
-    { data: preps },
-    { data: maps },
-    { data: quizzes },
-    { data: activities },
-  ] = await Promise.all([
+  await Promise.all([
     supabase
       .from("teachpacks")
       .select("id, topic, subject, created_at")
@@ -80,31 +48,6 @@ export default async function DashboardPage() {
       .order("created_at", { ascending: false })
       .limit(2),
   ]);
-
-  const recent = [
-    ...(packs || []).map((p) => ({ ...p, type: "teachpack", title: p.topic })),
-    ...(preps || []).map((p) => ({
-      ...p,
-      type: "lastminprep",
-      title: p.topic,
-    })),
-    ...(maps || []).map((m) => ({ ...m, type: "mindmap", title: m.topic })),
-    ...(quizzes || []).map((q) => ({
-      ...q,
-      type: "quiz",
-      title: q.topics?.[0] || q.subject,
-    })),
-    ...(activities || []).map((a) => ({
-      ...a,
-      type: "activity",
-      title: a.topic,
-    })),
-  ]
-    .sort(
-      (a, b) =>
-        new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
-    )
-    .slice(0, 5);
 
   return (
     <div className="px-4 sm:px-6 lg:px-8 py-8 w-[90%] mx-auto">

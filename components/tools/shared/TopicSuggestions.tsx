@@ -56,7 +56,12 @@ export function TopicSuggestions({
   }, [board, classNum, subject]);
 
   return (
-    <Combobox items={topics} value={value} onSelect={onSelectTopic} onChange={onChangeTopic}>
+    <Combobox
+      items={topics}
+      value={value}
+      onSelect={(val) => { if (typeof val === "string") onSelectTopic(val); }}
+      onChange={onChangeTopic}
+    >
       <ComboboxInput placeholder={placeholder} className={className} />
       <ComboboxContent>
         <ComboboxList>

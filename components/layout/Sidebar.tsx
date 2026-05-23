@@ -128,7 +128,7 @@ export function SidebarCom() {
     }
 
     fetchRecent();
-  }, [sidebarOpen]);
+  }, [sidebarOpen, supabase]);
 
   async function handleLogout() {
     await supabase.auth.signOut();

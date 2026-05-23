@@ -3,7 +3,8 @@
 import { AlertCircle, RotateCcw } from 'lucide-react';
 
 export default function GlobalError({
-  error,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _error,
   reset,
 }: {
   error: Error & { digest?: string };

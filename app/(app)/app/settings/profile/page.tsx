@@ -27,7 +27,7 @@ export default function ProfileSettingsPage() {
       if (data) setProfile(data as Profile);
     }
     load();
-  }, []);
+  }, [supabase]);
 
   function toggleItem(field: 'classes' | 'subjects', item: string) {
     if (!profile) return;

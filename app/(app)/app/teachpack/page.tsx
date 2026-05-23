@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { Plus, BookOpen, Star, Trash2, ArrowLeft } from 'lucide-react';
+import { Plus, BookOpen, Star, ArrowLeft } from 'lucide-react';
 
 function formatDate(d: string) {
   return new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });

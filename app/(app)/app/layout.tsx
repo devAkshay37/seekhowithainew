@@ -1,6 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
 import { SidebarCom } from '@/components/layout/Sidebar';
-import { BottomNav } from '@/components/layout/BottomNav';
 import { redirect } from 'next/navigation';
 import { PostHogSessionTracker } from './PostHogSessionTracker';
 import { SidebarProvider } from '@/components/layout/SidebarContext';
