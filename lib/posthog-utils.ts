@@ -5,7 +5,8 @@ export async function trackGenerationCompletion(
   supabase: SupabaseClient,
   posthog: PostHog,
   tool: string,
-  formData: object | undefined,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  formData: Record<string, any> | undefined,
   timeTaken: number,
   sectionsCount: number
 ) {
@@ -49,9 +50,9 @@ export async function trackGenerationCompletion(
     if (count === 0) {
       posthog.capture('first_teachpack_completed', {
         tool,
-        board: formData.board,
-        class: formData.class,
-        subject: formData.subject,
+        board: formData?.board,
+        class: formData?.class,
+        subject: formData?.subject,
       });
     } else if (count === 1) {
       const firstDate = new Date(pastPacks[0].created_at);
@@ -65,7 +66,7 @@ export async function trackGenerationCompletion(
 
     // 2. Multiple subjects
     const pastSubjects = new Set(pastPacks.map(p => p.subject).filter(Boolean));
-    const currentSubject = formData.subject;
+    const currentSubject = formData?.subject;
     if (currentSubject && !pastSubjects.has(currentSubject) && pastSubjects.size >= 1) {
       // It's a NEW subject, and they've used at least one OTHER subject before
       posthog.capture('multiple_subjects_used', {
@@ -75,7 +76,7 @@ export async function trackGenerationCompletion(
 
     // 3. Multiple classes
     const pastClasses = new Set(pastPacks.map(p => p.class).filter(Boolean));
-    const currentClass = formData.class;
+    const currentClass = formData?.class;
     if (currentClass && !pastClasses.has(currentClass) && pastClasses.size >= 1) {
       posthog.capture('multiple_classes_used', {
         class_count: pastClasses.size + 1,
