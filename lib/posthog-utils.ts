@@ -2,10 +2,10 @@ import { SupabaseClient } from '@supabase/supabase-js';
 import { PostHog } from 'posthog-js';
 
 export async function trackGenerationCompletion(
-  supabase: SupabaseClient,
-  posthog: PostHog,
+  supabase: any,
+  posthog: any,
   tool: string,
-  formData: Record<string, unknown>,
+  formData: object | undefined,
   timeTaken: number,
   sectionsCount: number
 ) {
@@ -30,12 +30,12 @@ export async function trackGenerationCompletion(
     // BUT what about distinct subjects/classes?
     // "After any generation - check if the user has now used more than one subject. If yes, fire once per new subject"
     // To do this reliably, we can store a user_metric record, OR query the past teachpacks. Let's query past teachpacks.
-    
+
     const { data: pastPacks } = await supabase
       .from('teachpacks')
       .select('id, created_at, subject, class, tool')
       .eq('user_id', user.id);
-      
+
     if (!pastPacks) return;
 
     // The 'tool' might not exist in teachpacks if it's implicitly all "TeachPack". 
@@ -57,7 +57,7 @@ export async function trackGenerationCompletion(
       const firstDate = new Date(pastPacks[0].created_at);
       const now = new Date();
       const diffTime = Math.abs(now.getTime() - firstDate.getTime());
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       posthog.capture('second_teachpack_created', {
         days_since_first: diffDays,
       });
